@@ -1,7 +1,7 @@
 import React from 'react';
-import { SafeAreaView, View, Text, FlatList } from 'react-native';
+import { SafeAreaView, View, Text, FlatList, ScrollView } from 'react-native';
 
-import {NewsCard} from './components'
+import { NewsCard, Banner } from './components'
 
 const news_data = [
     {
@@ -83,17 +83,35 @@ const banner_data = [
 ];
 
 const App = () => {
-    
+
+    const ListHeader = () => {
+        return (
+
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                {
+                    banner_data.map((item) => {
+                        return (
+                            <Banner images={item.imageUrl} />
+                        )
+                    })
+                }
+            </ScrollView>
+            
+        )
+    }
+
     const renderdata = (data) => <NewsCard news={data.item} />
-  
+
     return (
+
         <SafeAreaView>
-        
+
             <FlatList
-                keyExtractor={(item,index) => index.toString()}
+                keyExtractor={(item, index) => index.toString()}
                 data={news_data}
                 renderItem={renderdata}
-                numColumns = {2}
+                numColumns={2}
+                ListHeaderComponent={ListHeader}
             />
 
         </SafeAreaView>
