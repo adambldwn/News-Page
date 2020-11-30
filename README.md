@@ -1,5 +1,5 @@
 # News-Page
-# React Native project-2
+# React Native Project-2
 
 FlatList
 
