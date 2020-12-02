@@ -6,5 +6,5 @@ FlatList
 
 Text
 
-Component
+Custom Component
 
